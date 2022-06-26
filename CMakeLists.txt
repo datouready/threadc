@@ -21,10 +21,7 @@ include_directories(./include)
 # // 语法 link_directories(dir1 dir2...)
 link_directories(./lib)
 
-# // add_library-生成库文件
-# // add_library(libname[SHARED|STATIC|MODULE][EXCLUDE_FROM_ALL]source1 source2...sourceN)
-# // 通过变量SRC生成libhello.so共享库
-# add_library(hello SHARED ${SRC})
+
 
 # // add_compile_options-添加编译参数
 add_compile_options(-Wall -std=c++11 -O2)
@@ -52,6 +49,18 @@ add_executable(main ${SRC})
 # CMAKE_C_COMPILER:指定C编译器
 # CMAKE_CXX_COMPILER:指定C++编译器
 # EXECUTABLE_OUTPUT_PATH:可执行文件输出的存放路径
+# PROJECT_SOURCE_DIR：工程的根目录
+# set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 # LIBRARY_OUTPUT_PATH:库文件输出的存放路径
 
+# 使用多线程
 SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-pthread")
+
+# 动态库和静态库的编译控制
+
+# // add_library-生成库文件
+# add_library:生成动态库或静态库（第1个参数指定库的名字；
+# 第2个参数决定是动态还是静态，如果没有就默认静态；第3个参数指定生成库的源文件）
+# // add_library(libname[SHARED|STATIC|MODULE][EXCLUDE_FROM_ALL]source1 source2...sourceN)
+# // 通过变量SRC生成libhello.so共享库
+# add_library(hello SHARED ${SRC})
