@@ -1,4 +1,4 @@
 pro	:	main.cpp
-	g++ -o pro mythread.cpp main.cpp -lpthread
-run : pro
-	./pro
+	g++ main.cpp  -lfunc1 -L./lib -lpthread -I./include -o pro
+# run : pro
+# 	./pro
